@@ -334,8 +334,8 @@ for (var i = 0; i < objects.length; i++) {
 
   var img = document.createElement('img');
   img.className = 'rounded';
-  img.heigth = '"40"';
-  img.width = '"40"';
+  img.heigth = '40';
+  img.width = '40';
   img.setAttribute('src', arrImgAvatar[i]);
 
   div.appendChild(img);
