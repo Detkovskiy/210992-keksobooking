@@ -116,7 +116,7 @@ var getFeatures = function () {
   var rands = Math.floor(Math.random() * arrFeatures.length);
   rands = Math.floor(rands);
 
-  if (rands == 0) {
+  if (rands === 0) {
     sizeFeatures = 1;
   } else {
     sizeFeatures = rands;
@@ -334,8 +334,8 @@ for (var i = 0; i < objects.length; i++) {
 
   var img = document.createElement('img');
   img.className = 'rounded';
-  img.heigth = "40";
-  img.width = "40";
+  img.heigth = '"40"';
+  img.width = '"40"';
   img.setAttribute('src', arrImgAvatar[i]);
 
   div.appendChild(img);
@@ -382,15 +382,7 @@ var blockAvatar = document.querySelector('.dialog__title');
 var imgAvatar = blockAvatar.getElementsByTagName('img');
 imgAvatar[0].setAttribute('src', arrImgAvatar[0]);
 
-var  offerDialog = document.getElementById('offer-dialog');
-var  dialogPanel = offerDialog.querySelector('.dialog__panel');
+var offerDialog = document.getElementById('offer-dialog');
+var dialogPanel = offerDialog.querySelector('.dialog__panel');
 offerDialog.removeChild(dialogPanel);
 offerDialog.appendChild(poster);
-
-
-
-
-
-
-
-
