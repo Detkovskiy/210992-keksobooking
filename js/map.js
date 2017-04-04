@@ -5,22 +5,13 @@
 'use strict';
 
 var imgIndex = function (i) {
-  if (i < 10) {
-    i = '0' + i;
+  if (i == 0) {
+    i = '01';
+  } else if (i < 10) {
+    i = '0' + ++i;
   }
   return i;
 };
-
-var arrImgAvatar = [
-  'img/avatars/user' + imgIndex(1) + '.png',
-  'img/avatars/user' + imgIndex(2) + '.png',
-  'img/avatars/user' + imgIndex(3) + '.png',
-  'img/avatars/user' + imgIndex(4) + '.png',
-  'img/avatars/user' + imgIndex(5) + '.png',
-  'img/avatars/user' + imgIndex(6) + '.png',
-  'img/avatars/user' + imgIndex(7) + '.png',
-  'img/avatars/user' + imgIndex(8) + '.png'
-];
 
 var arrTitle = [
   'Большая уютная квартира',
@@ -60,55 +51,20 @@ var arrFeatures = [
   'conditioner'
 ];
 
-/* генерация  заголовка */
-var getTitle = function () {
-  var rands = Math.floor(Math.random() * arrTitle.length);
-  rands = Math.floor(rands);
-  var title = arrTitle[rands];
-  return title;
+/* случайный элемент из массива */
+var getRandomItemArr = function (arr) {
+  var randomNumber = Math.floor(Math.random() * arr.length);
+  return arr[randomNumber];
 };
 
-/* генерация стоимости */
-var getPrice = function () {
-  var rand = 1000 + Math.random() * (1000000 + 1 - 1000);
-  rand = Math.floor(rand);
-  return rand;
+/* случайный число из периода */
+var getRandomRange = function (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-/* генерация типа жилья */
-var getType = function () {
-  var rand = Math.floor(Math.random() * arrType.length);
-  rand = Math.floor(rand);
-  return arrType[rand];
-};
-
-/* генерация кол-ва комнат */
-var getRooms = function () {
-  var rand = 1 + Math.random() * (5 + 1 - 1);
-  rand = Math.floor(rand);
-  return rand;
-};
-
-/* генерация кол-ва гостей */
-var getGuests = function () {
-  var rand = 1 + Math.random() * (10 + 1 - 1);
-  rand = Math.floor(rand);
-  return rand;
-};
-
-/* время заезда */
-var getCheckin = function () {
-  var rand = Math.floor(Math.random() * arrCheckin.length);
-  rand = Math.floor(rand);
-  return arrCheckin[rand];
-};
-
-/* время выезда */
-var getCheckout = function () {
-  var rand = Math.floor(Math.random() * arrCheckout.length);
-  rand = Math.floor(rand);
-  return arrCheckout[rand];
-};
+/* стоимость жилья */
+var minRentPrice = 1000;
+var maxRentPrice = 1000000;
 
 /* особенности жилья */
 var sizeFeatures = arrFeatures.length;
@@ -125,199 +81,40 @@ var getFeatures = function () {
   return sizeFeatures;
 };
 
-/* координата по Х */
-var getX = function () {
-  var rand = 300 + Math.random() * (900 + 1 - 300);
-  rand = Math.floor(rand);
-  return rand;
-};
-
-/* координата по Y */
-var getY = function () {
-  var rand = 100 + Math.random() * (500 + 1 - 100);
-  rand = Math.floor(rand);
-  return rand;
-};
-
-/* массив с 8-ю объектами*/
-var objects = [
-  {
+/* формирование случайного объявления */
+var object = function (i) {
+  return {
     author: {
-      avatar: arrImgAvatar[0]
+      avatar: 'img/avatars/user' + imgIndex(i) + '.png'
     },
     offer: {
-      title: getTitle(),
+      title: getRandomItemArr(arrTitle),
       address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
+      price: getRandomRange(minRentPrice, maxRentPrice),
+      type: getRandomItemArr(arrType),
+      rooms: getRandomRange(1, 5),
+      guests: getRandomRange(1, 10),
+      checkin: getRandomItemArr(arrCheckin),
+      checkout: getRandomItemArr(arrCheckout),
       features: getFeatures(),
-      description: 'Первый (тест)',
+      description: ' ',
       photos: []
     },
     location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[1]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[2]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[3]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[4]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[5]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[6]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
-    }
-  },
-  {
-    author: {
-      avatar: arrImgAvatar[7]
-    },
-    offer: {
-      title: getTitle(),
-      address: 'location.x, location.y',
-      price: getPrice(),
-      type: getType(),
-      rooms: getRooms(),
-      guests: getGuests(),
-      checkin: getCheckin(),
-      checkout: getCheckout(),
-      features: getFeatures(),
-      description: '',
-      photos: []
-    },
-    location: {
-      X: getX(),
-      Y: getY()
+      X: getRandomRange(300, 900),
+      Y: getRandomRange(100, 500)
     }
   }
-];
+};
+
+/* создание массива объявлений */
+var arrObject = function () {
+  arrObject = [];
+  for ( var i = 0; i <= 8; i++) {
+    arrObject.push(object(i))
+  }
+   return arrObject;
+};
 
 /* генерация и вывод иконок жильцов */
 var tokioPins = document.querySelector('.tokyo__pin-map');
@@ -327,16 +124,20 @@ var sizeIconPin = {
   height: 75
 };
 
-for (var i = 0; i < objects.length; i++) {
+for (var i = 0; i < 8; i++) {
+  /* координата по Х и Y */
+  var getX = getRandomRange(300, 900);
+  var getY = getRandomRange(100, 500);
+
   var div = document.createElement('div');
   div.className = 'pin';
-  div.setAttribute('style', 'left:' + (getX() + (sizeIconPin.width / 2)) + 'px; top:' + (getY() + sizeIconPin.height) + 'px;');
+  div.setAttribute('style', 'left:' + (getX + (sizeIconPin.width / 2)) + 'px; top:' + (getY + sizeIconPin.height) + 'px;');
 
   var img = document.createElement('img');
   img.className = 'rounded';
   img.height = '40';
   img.width = '40';
-  img.setAttribute('src', arrImgAvatar[i]);
+  img.setAttribute('src', 'img/avatars/user' + imgIndex(i) + '.png');
 
   div.appendChild(img);
   fragment.appendChild(div);
@@ -348,24 +149,24 @@ tokioPins.appendChild(fragment);
 var lodgeTemplate = document.getElementById('lodge-template').content;
 var poster = lodgeTemplate.cloneNode(true);
 
-poster.querySelector('.lodge__title').textContent = getTitle();
-poster.querySelector('.lodge__address').textContent = objects[0].offer.address;
+poster.querySelector('.lodge__title').textContent = getRandomItemArr(arrTitle);
+poster.querySelector('.lodge__address').textContent = object(0).offer.address;
 var iconRub = '&#x20bd;';
-poster.querySelector('.lodge__price').innerHTML = getPrice() + ' ' + iconRub + '/ночь';
+poster.querySelector('.lodge__price').innerHTML = getRandomRange(minRentPrice, maxRentPrice) + ' ' + iconRub + '/ночь';
 
 var lodgeType = '';
 
-if (getType() === 'flat') {
+if (getRandomItemArr(arrType) === 'flat') {
   lodgeType = 'Квартира';
-} else if (getType() === 'bungalo') {
+} else if (getRandomItemArr(arrType) === 'bungalo') {
   lodgeType = 'Бунгало';
 } else {
   lodgeType = 'Дом';
 }
 
 poster.querySelector('.lodge__type').textContent = lodgeType;
-poster.querySelector('.lodge__rooms-and-guests').textContent = 'Для ' + getGuests() + ' гостей в ' + getRooms() + ' комнатах';
-poster.querySelector('.lodge__checkin-time').textContent = 'Заезд после ' + getCheckin() + ', выезд до ' + getCheckout();
+poster.querySelector('.lodge__rooms-and-guests').textContent = 'Для ' + getRandomRange(1, 10) + ' гостей в ' + getRandomRange(1, 5) + ' комнатах';
+poster.querySelector('.lodge__checkin-time').textContent = 'Заезд после ' + getRandomItemArr(arrCheckin) + ', выезд до ' + getRandomItemArr(arrCheckout);
 
 arrFeatures.length = getFeatures();
 var fragmentFeatures = document.createDocumentFragment();
@@ -376,11 +177,11 @@ for (var j = 0; j < arrFeatures.length; j++) {
   fragmentFeatures.appendChild(span);
 }
 poster.querySelector('.lodge__features').appendChild(fragmentFeatures);
-poster.querySelector('.lodge__description').textContent = objects[0].offer.description;
+poster.querySelector('.lodge__description').textContent = object(0).offer.description;
 
 var blockAvatar = document.querySelector('.dialog__title');
 var imgAvatar = blockAvatar.getElementsByTagName('img');
-imgAvatar[0].setAttribute('src', arrImgAvatar[0]);
+imgAvatar[0].setAttribute('src', 'img/avatars/user' + imgIndex(0) + '.png');
 
 var offerDialog = document.getElementById('offer-dialog');
 var dialogPanel = offerDialog.querySelector('.dialog__panel');
