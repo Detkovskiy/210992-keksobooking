@@ -5,7 +5,7 @@
 'use strict';
 
 var imgIndex = function (i) {
-  if (i == 0) {
+  if (i === 0) {
     i = '01';
   } else if (i < 10) {
     i = '0' + ++i;
@@ -104,16 +104,16 @@ var object = function (i) {
       X: getRandomRange(300, 900),
       Y: getRandomRange(100, 500)
     }
-  }
+  };
 };
 
 /* создание массива объявлений */
 var arrObject = function () {
   arrObject = [];
-  for ( var i = 0; i <= 8; i++) {
-    arrObject.push(object(i))
+  for (var i = 0; i <= 8; i++) {
+    arrObject.push(object(i));
   }
-   return arrObject;
+    return arrObject;
 };
 
 /* генерация и вывод иконок жильцов */
