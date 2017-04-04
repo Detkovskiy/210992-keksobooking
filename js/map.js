@@ -113,7 +113,7 @@ var arrObject = function () {
   for (var i = 0; i <= 8; i++) {
     arrObject.push(object(i));
   }
-    return arrObject;
+  return arrObject;
 };
 
 /* генерация и вывод иконок жильцов */
