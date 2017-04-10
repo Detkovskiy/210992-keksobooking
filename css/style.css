@@ -659,3 +659,15 @@ select option:hover {
 .hidden {
   display: none;
 }
+
+input:required:invalid {
+  border: none;
+}
+
+input:invalid,
+input:invalid:focus,
+textarea:invalid:focus {
+  border: 2px solid #f4070b;
+}
+
+
