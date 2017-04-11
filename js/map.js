@@ -337,11 +337,3 @@ time.addEventListener('change', function () {
   var selectedOptions = time.options[time.selectedIndex].value;
   timeout.value = selectedOptions;
 });
-
-/* оброботчик - очистка формы при нажатии на кнопку */
-var buttonSubmit = noticeForm.querySelector('.form__submit');
-var onButtonPress = function () {
-  noticeForm.reset();
-};
-
-buttonSubmit.addEventListener('click', onButtonPress);
