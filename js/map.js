@@ -184,7 +184,7 @@ var renderPins = function () {
 };
 
 /* отрисовка pin на карте */
-renderPins(); // можно так оставить???
+renderPins();
 
 var lodgeTemplate = document.getElementById('lodge-template').content;
 var blockAvatar = document.querySelector('.dialog__title');
