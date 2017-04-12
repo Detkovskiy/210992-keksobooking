@@ -80,7 +80,9 @@ window.pin = (function () {
   }
 
   return {
-    delActivePin: delActivePin
+    delActivePin: delActivePin,
+    tokyoPins: tokyoPins,
+    pins: pins
   };
 
 })();

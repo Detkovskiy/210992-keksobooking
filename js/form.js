@@ -3,7 +3,7 @@
  */
 'use strict';
 
-(function () {
+window.form = (function () {
 
   /* поиск формы в документе */
   var noticeForm = document.querySelector('.notice__form');
@@ -47,5 +47,9 @@
     var selectedOptions = time.options[time.selectedIndex].value;
     timeout.value = selectedOptions;
   });
+
+  return {
+    noticeForm: noticeForm
+  };
 
 })();
