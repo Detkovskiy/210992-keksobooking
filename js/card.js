@@ -57,7 +57,7 @@ window.card = (function () {
   /* оброботчик события - нажатие на крестик в окне объявления */
   var onCrossPress = function () {
     closeDialog();
-    delActivePin();
+    window.pin.delActivePin();
   };
 
   /* нажатие на крестик в окне объявления */
@@ -74,6 +74,7 @@ window.card = (function () {
     if (containHidden !== null) {
       offerDialog.classList.remove('hidden');
     }
+    document.addEventListener('keydown', onEscPress);
   };
 
   return {

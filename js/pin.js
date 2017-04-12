@@ -3,7 +3,7 @@
  */
 'use strict';
 
-(function () {
+window.pin = (function () {
 
   /* зазмеры иконки Pin */
   var sizeIconPin = {
@@ -78,5 +78,9 @@
       }
     });
   }
+
+  return {
+    delActivePin: delActivePin
+  };
 
 })();
