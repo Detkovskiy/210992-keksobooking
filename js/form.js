@@ -8,7 +8,7 @@ window.form = (function () {
   /* поиск формы в документе */
   var noticeForm = document.querySelector('.notice__form');
 
-  var syncValues = function(element, value) {
+  var syncValues = function (element, value) {
     element.value = value;
   };
 
