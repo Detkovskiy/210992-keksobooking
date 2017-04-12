@@ -68,13 +68,13 @@ window.pin = (function () {
 
     pins[i].addEventListener('click', function (evt) {
       changeActivePins(evt.currentTarget);
-      window.card.openDialog(evt);
+      window.showCard(evt);
     });
 
     pins[i].addEventListener('keydown', function (evt) {
       if (evt.keyCode === 13) {
         changeActivePins(evt.currentTarget);
-        window.card.openDialog(evt);
+        window.showCard(evt);
       }
     });
   }

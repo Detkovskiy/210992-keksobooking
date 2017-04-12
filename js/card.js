@@ -64,21 +64,10 @@ window.card = (function () {
   var dialogClose = offerDialog.querySelector('.dialog__close');
   dialogClose.addEventListener('click', onCrossPress);
 
-
-  /* вывод объявления в зависимости от индекса pin
-   * проверка и удаление класса hidden */
-  var openDialog = function (evt) {
-    var indexPin = evt.currentTarget.getAttribute('data-index');
-    offerDialog.replaceChild(dialogBlock(indexPin), offerDialog.querySelector('.dialog__panel'));
-    var containHidden = offerDialog.classList.contains('hidden');
-    if (containHidden !== null) {
-      offerDialog.classList.remove('hidden');
-    }
-    document.addEventListener('keydown', onEscPress);
-  };
-
   return {
-    openDialog: openDialog
+    offerDialog: offerDialog,
+    dialogBlock: dialogBlock,
+    onEscPress: onEscPress
   };
 
 })();

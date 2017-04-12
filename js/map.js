@@ -3,6 +3,7 @@
  */
 
 'use strict';
+
 (function () {
   var mainPin = window.pin.tokyoPins.querySelector('.pin__main');
   var address = window.form.noticeForm.querySelector('#address');
@@ -68,7 +69,9 @@
     mainPin.style.left = (+300 + +newCoords[1]) + 'px';
 
     /* отображение положения pin после введения координат в инпут */
-    address.setAttribute('value', 'X: ' + newCoords[1] + ', Y: ' + newCoords[0]);
+    if (quantity !== '') {
+      address.setAttribute('value', 'X: ' + newCoords[1] + ', Y: ' + newCoords[0]);
+    }
   };
 
   submitPress.addEventListener('click', onFormSubmitPress);
