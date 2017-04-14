@@ -64,7 +64,7 @@ window.pin = (function () {
    * открытие объявления по индексу pin */
   var pins = tokyoPins.querySelectorAll('.pin');
   changeActivePins(pins[0]);
-  for (var i = 0; i <= 8; i++) {
+  for (var i = 1; i <= 8; i++) {
 
     pins[i].addEventListener('click', function (evt) {
       changeActivePins(evt.currentTarget);
@@ -80,7 +80,9 @@ window.pin = (function () {
   }
 
   return {
-    delActivePin: delActivePin
+    delActivePin: delActivePin,
+    tokyoPins: tokyoPins,
+    pins: pins
   };
 
 })();
