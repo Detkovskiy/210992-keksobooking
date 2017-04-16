@@ -3,8 +3,7 @@
  */
 'use strict';
 
-window.pin = (function () {
-
+window.pin = function () {
   /* зазмеры иконки Pin */
   var sizeIconPin = {
     width: 56,
@@ -13,6 +12,7 @@ window.pin = (function () {
 
   /* формирование pin */
   var generatePin = function (i) {
+
     var getX = window.data[i].location.x;
     var getY = window.data[i].location.y;
     var div = document.createElement('div');
@@ -35,8 +35,7 @@ window.pin = (function () {
   var tokyoPins = document.querySelector('.tokyo__pin-map');
   var fragment = document.createDocumentFragment();
   (function () {
-
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < window.data.length; i++) {
       var pin = generatePin(i);
       fragment.appendChild(pin);
     }
@@ -64,7 +63,7 @@ window.pin = (function () {
    * открытие объявления по индексу pin */
   var pins = tokyoPins.querySelectorAll('.pin');
   changeActivePins(pins[0]);
-  for (var i = 1; i <= 8; i++) {
+  for (var i = 1; i <= window.data.length; i++) {
 
     pins[i].addEventListener('click', function (evt) {
       changeActivePins(evt.currentTarget);
@@ -85,4 +84,4 @@ window.pin = (function () {
     pins: pins
   };
 
-})();
+};

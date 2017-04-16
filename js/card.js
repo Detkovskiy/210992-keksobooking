@@ -4,7 +4,6 @@
 'use strict';
 
 window.card = (function () {
-
   var lodgeTemplate = document.getElementById('lodge-template').content;
   var blockAvatar = document.querySelector('.dialog__title');
   var imgAvatar = blockAvatar.getElementsByTagName('img');
@@ -36,12 +35,16 @@ window.card = (function () {
 
   /* вывод первого объявления при загрузке страницы */
   var offerDialog = document.getElementById('offer-dialog');
-  offerDialog.replaceChild(dialogBlock(0), offerDialog.querySelector('.dialog__panel'));
+  //offerDialog.replaceChild(dialogBlock(3), offerDialog.querySelector('.dialog__panel'));
 
   /* оброботчик события - нажатие на ESC */
   var onEscPress = function (evt) {
     if (evt.keyCode === 27) {
       offerDialog.classList.add('hidden');
+      var pinActive = document.querySelector('.pin--active');
+      if (pinActive !== null) {
+        pinActive.classList.remove('pin--active');
+      }
     }
   };
 
@@ -57,7 +60,10 @@ window.card = (function () {
   /* оброботчик события - нажатие на крестик в окне объявления */
   var onCrossPress = function () {
     closeDialog();
-    window.pin.delActivePin();
+    var pinActive = document.querySelector('.pin--active');
+    if (pinActive !== null) {
+      pinActive.classList.remove('pin--active');
+    }
   };
 
   /* нажатие на крестик в окне объявления */

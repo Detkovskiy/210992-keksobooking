@@ -13,3 +13,4 @@ window.showCard = function (evt) {
   }
   document.addEventListener('keydown', window.card.onEscPress);
 };
+
