@@ -13,4 +13,3 @@ window.showCard = function (evt) {
   }
   document.addEventListener('keydown', window.card.onEscPress);
 };
-window.card.offerDialog.replaceChild(window.card.dialogBlock(0), window.card.offerDialog.querySelector('.dialog__panel'));
