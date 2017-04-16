@@ -116,7 +116,7 @@ window.data = (function () {
   /* создание массива объявлений */
   var objects = (function () {
     objects = [];
-    for (var i = 0; i <= 8; i++) {
+    for (var i = 0; i <= 9; i++) {
       objects.push(renderOneObject(i));
     }
     return objects;
