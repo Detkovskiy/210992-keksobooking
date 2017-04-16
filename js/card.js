@@ -35,7 +35,7 @@ window.card = (function () {
 
   /* вывод первого объявления при загрузке страницы */
   var offerDialog = document.getElementById('offer-dialog');
-  //offerDialog.replaceChild(dialogBlock(3), offerDialog.querySelector('.dialog__panel'));
+  // offerDialog.replaceChild(dialogBlock(3), offerDialog.querySelector('.dialog__panel'));
 
   /* оброботчик события - нажатие на ESC */
   var onEscPress = function (evt) {

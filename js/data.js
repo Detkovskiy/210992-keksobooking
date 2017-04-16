@@ -10,7 +10,6 @@ window.data = (function () {
   var objects = [];
   var onSuccess = function (data) {
 
-    console.log(data);
     for (var i = 0; i < data.length; i++) {
       objects.push(data[i]);
     }

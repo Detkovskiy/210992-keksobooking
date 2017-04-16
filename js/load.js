@@ -19,7 +19,7 @@
 
     xhr.open('GET', url);
     xhr.send();
-  }
+  };
 
 })();
 
