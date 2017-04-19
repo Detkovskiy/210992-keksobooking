@@ -670,4 +670,58 @@ textarea:invalid:focus {
   border: 2px solid #f4070b;
 }
 
+.error__block {
+  position: absolute;
+  top: 115px;
+  left: 38%;
+  z-index: 1000;
+  width: 300px;
+  height: 300px;
+  background: url('../img/error-load.svg') no-repeat center;
+}
 
+.error__message {
+  position: relative;
+  top: 27%;
+  left: 10%;
+  display: block;
+  width: 241px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.error__code span:first-child {
+  font-size: 16px;
+}
+
+.error__code {
+  position: relative;
+  top: 20%;
+  left: 10%;
+  width: 241px;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.error__close {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: url('../img/close.svg') no-repeat center;
+  background-size: 20px 20px;
+  transition: transform 0.5s ease-out 0.1s;
+}
+
+.error__close:hover {
+  background-size: 30px 30px;
+  transform: rotate(90deg);
+}

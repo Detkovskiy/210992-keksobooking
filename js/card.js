@@ -35,16 +35,12 @@ window.card = (function () {
 
   /* вывод первого объявления при загрузке страницы */
   var offerDialog = document.getElementById('offer-dialog');
-  // offerDialog.replaceChild(dialogBlock(3), offerDialog.querySelector('.dialog__panel'));
 
   /* оброботчик события - нажатие на ESC */
   var onEscPress = function (evt) {
     if (evt.keyCode === 27) {
       offerDialog.classList.add('hidden');
-      var pinActive = document.querySelector('.pin--active');
-      if (pinActive !== null) {
-        pinActive.classList.remove('pin--active');
-      }
+      window.pin.delActivePin();
     }
   };
 
@@ -60,10 +56,7 @@ window.card = (function () {
   /* оброботчик события - нажатие на крестик в окне объявления */
   var onCrossPress = function () {
     closeDialog();
-    var pinActive = document.querySelector('.pin--active');
-    if (pinActive !== null) {
-      pinActive.classList.remove('pin--active');
-    }
+    window.pin.delActivePin();
   };
 
   /* нажатие на крестик в окне объявления */

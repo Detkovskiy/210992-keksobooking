@@ -3,7 +3,9 @@
  */
 'use strict';
 
-window.pin = function () {
+window.pin = (function () {
+  var tokyoPins = document.querySelector('.tokyo__pin-map');
+
   /* зазмеры иконки Pin */
   var sizeIconPin = {
     width: 56,
@@ -17,7 +19,7 @@ window.pin = function () {
     var getY = window.data[i].location.y;
     var div = document.createElement('div');
     div.className = 'pin';
-    div.setAttribute('style', 'left:' + (getX + (sizeIconPin.width / 2)) + 'px; top:' + (getY + sizeIconPin.height) + 'px;');
+    div.setAttribute('style', 'left:' + (getX - (sizeIconPin.width / 2)) + 'px; top:' + (getY - sizeIconPin.height) + 'px;');
     div.setAttribute('data-index', i);
 
     var img = document.createElement('img');
@@ -30,19 +32,6 @@ window.pin = function () {
 
     return div;
   };
-
-  /* отрисовка pin в фрагмент */
-  var tokyoPins = document.querySelector('.tokyo__pin-map');
-  var fragment = document.createDocumentFragment();
-  (function () {
-    for (var i = 0; i < window.data.length; i++) {
-      var pin = generatePin(i);
-      fragment.appendChild(pin);
-    }
-
-    tokyoPins.appendChild(fragment);
-    return tokyoPins;
-  })();
 
   /* перестановка pin--active */
   var changeActivePins = function (item) {
@@ -61,27 +50,31 @@ window.pin = function () {
   /* отслеживание нажатия на pin
    * перестановка класса Active на нажатый pin
    * открытие объявления по индексу pin */
-  var pins = tokyoPins.querySelectorAll('.pin');
-  changeActivePins(pins[0]);
-  for (var i = 1; i <= window.data.length; i++) {
+  var connectionPin = function (arr) {
+    var pins = tokyoPins.querySelectorAll('.pin');
+    changeActivePins(pins[0]);
 
-    pins[i].addEventListener('click', function (evt) {
-      changeActivePins(evt.currentTarget);
-      window.showCard(evt);
-    });
+    for (var i = 1; i <= arr.length; i++) {
 
-    pins[i].addEventListener('keydown', function (evt) {
-      if (evt.keyCode === 13) {
+      pins[i].addEventListener('click', function (evt) {
         changeActivePins(evt.currentTarget);
         window.showCard(evt);
-      }
-    });
-  }
+      });
+
+      pins[i].addEventListener('keydown', function (evt) {
+        if (evt.keyCode === 13) {
+          changeActivePins(evt.currentTarget);
+          window.showCard(evt);
+        }
+      });
+    }
+  };
 
   return {
     delActivePin: delActivePin,
-    tokyoPins: tokyoPins,
-    pins: pins
+    generatePin: generatePin,
+    connectionPin: connectionPin,
+    tokyoPins: tokyoPins
   };
 
-};
+})();
