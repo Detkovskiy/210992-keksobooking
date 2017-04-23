@@ -4,8 +4,9 @@
 
 'use strict';
 
-(function () {
-  var mainPin = window.pin.tokyoPins.querySelector('.pin__main');
+window.map = (function () {
+  // var mainPin = window.pin.tokyoPins.querySelector('.pin__main');
+  var mainPin = document.querySelector('.pin__main');
   var address = window.form.noticeForm.querySelector('#address');
 
   mainPin.addEventListener('mousedown', function (evt) {
