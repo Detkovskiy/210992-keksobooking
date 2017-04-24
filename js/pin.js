@@ -13,10 +13,10 @@ window.pin = (function () {
   };
 
   /* формирование pin */
-  var generatePin = function (i) {
+  var generatePin = function (item, i) {
 
-    var getX = window.data[i].location.x;
-    var getY = window.data[i].location.y;
+    var getX = item.location.x;
+    var getY = item.location.y;
     var div = document.createElement('div');
     div.className = 'pin';
     div.setAttribute('style', 'left:' + (getX - (sizeIconPin.width / 2)) + 'px; top:' + (getY - sizeIconPin.height) + 'px;');
@@ -26,11 +26,22 @@ window.pin = (function () {
     img.className = 'rounded';
     img.height = '40';
     img.width = '40';
-    img.setAttribute('src', window.data[i].author.avatar);
+    img.setAttribute('src', item.author.avatar);
     img.setAttribute('tabindex', '0');
     div.appendChild(img);
 
     return div;
+  };
+
+  /* отрисовка pin на карту */
+    var renderPin = function (data) {
+      var fragment = document.createDocumentFragment();
+
+      for (var i = 0; i < data.length; i++) {
+        fragment.appendChild(generatePin(data[i], i));
+      }
+      tokyoPins.appendChild(fragment);
+      connectionPin(data);
   };
 
   /* перестановка pin--active */
@@ -51,10 +62,10 @@ window.pin = (function () {
    * перестановка класса Active на нажатый pin
    * открытие объявления по индексу pin */
   var connectionPin = function (arr) {
-    var pins = tokyoPins.querySelectorAll('.pin');
+    var pins = document.querySelectorAll('.pin:not(.pin__main)');
     changeActivePins(pins[0]);
 
-    for (var i = 1; i <= arr.length; i++) {
+    for (var i = 0; i < arr.length; i++) {
 
       pins[i].addEventListener('click', function (evt) {
         changeActivePins(evt.currentTarget);
@@ -74,6 +85,7 @@ window.pin = (function () {
     delActivePin: delActivePin,
     generatePin: generatePin,
     connectionPin: connectionPin,
+    renderPin: renderPin,
     tokyoPins: tokyoPins
   };
 

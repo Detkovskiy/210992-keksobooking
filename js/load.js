@@ -67,20 +67,6 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
         onSuccess(xhr.response);
-
-        (function () {
-          var fragment = document.createDocumentFragment();
-
-          for (var i = 0; i < window.data.length; i++) {
-            var pin = window.pin.generatePin(i);
-            fragment.appendChild(pin);
-          }
-
-          window.pin.tokyoPins.appendChild(fragment);
-          return window.pin.tokyoPins;
-        })();
-
-        window.pin.connectionPin(window.data);
       } else {
         temporarily();
         errorLoad();
