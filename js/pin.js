@@ -34,14 +34,14 @@ window.pin = (function () {
   };
 
   /* отрисовка pin на карту */
-    var renderPin = function (data) {
-      var fragment = document.createDocumentFragment();
+  var renderPin = function (data) {
+    var fragment = document.createDocumentFragment();
 
-      for (var i = 0; i < data.length; i++) {
-        fragment.appendChild(generatePin(data[i], i));
-      }
-      tokyoPins.appendChild(fragment);
-      connectionPin(data);
+    for (var i = 0; i < data.length; i++) {
+      fragment.appendChild(generatePin(data[i], i));
+    }
+    tokyoPins.appendChild(fragment);
+    connectionPin(data);
   };
 
   /* перестановка pin--active */
