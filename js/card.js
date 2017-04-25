@@ -51,7 +51,7 @@ window.card = (function () {
     for (j = 0; j < item[i].offer.photos.length; j++) {
       poster.querySelector('.lodge__photos').appendChild(renderImg(item[i].offer.photos[j]));
     }
-    imgAvatar[0].setAttribute('src',item[i].author.avatar);
+    imgAvatar[0].setAttribute('src', item[i].author.avatar);
 
     return poster;
   };

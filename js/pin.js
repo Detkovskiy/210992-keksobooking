@@ -69,16 +69,16 @@ window.pin = (function () {
    * открытие объявления по индексу pin */
   var connectionPin = function (arr) {
     window.pins = document.querySelectorAll('.pin:not(.pin__main)');
-    changeActivePins(pins[0]);
+    changeActivePins(window.pins[0]);
 
     for (var i = 0; i < arr.length; i++) {
 
-      pins[i].addEventListener('click', function (evt) {
+      window.pins[i].addEventListener('click', function (evt) {
         changeActivePins(evt.currentTarget);
         window.showCard(evt, arr);
       });
 
-      pins[i].addEventListener('keydown', function (evt) {
+      window.pins[i].addEventListener('keydown', function (evt) {
         if (evt.keyCode === 13) {
           changeActivePins(evt.currentTarget);
           window.showCard(evt);

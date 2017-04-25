@@ -77,12 +77,12 @@
 
   /* функция фильтрации по удобствам жилья */
   var filterFeatures = function (data) {
-      for (var i = 0; i < featuresInput.length; i++) {
-        if (featuresInput[i].checked && !searchElement(data.offer.features, featuresInput[i].value)) {
-          return false;
-        }
+    for (var i = 0; i < featuresInput.length; i++) {
+      if (featuresInput[i].checked && !searchElement(data.offer.features, featuresInput[i].value)) {
+        return false;
       }
-      return true;
+    }
+    return true;
   };
 
   /* массив с фильтрами */
@@ -96,10 +96,10 @@
 
   /* функция фильтрации массива, формирование одного массива */
   var filter = function (data) {
-    return data.filter(function (data) {
+    return data.filter(function (item) {
       for (var i = 0; i < allFilter.length; i++) {
         var filter = allFilter[i];
-        if (filter(data) == false) {
+        if (filter(item) === false) {
           return false;
         }
       }
