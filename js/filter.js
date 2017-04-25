@@ -98,8 +98,8 @@
   var filter = function (data) {
     return data.filter(function (item) {
       for (var i = 0; i < allFilter.length; i++) {
-        var filter = allFilter[i];
-        if (filter(item) === false) {
+        var filterItem = allFilter[i];
+        if (filterItem(item) === false) {
           return false;
         }
       }
