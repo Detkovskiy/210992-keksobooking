@@ -36,7 +36,6 @@ window.pin = (function () {
   /* отрисовка pin на карту */
   var renderPin = function (data) {
     var fragment = document.createDocumentFragment();
-
     for (var i = 0; i < data.length; i++) {
       fragment.appendChild(generatePin(data[i], i));
     }
@@ -44,10 +43,17 @@ window.pin = (function () {
     connectionPin(data);
   };
 
+  /* функция вызова обновления pin на карте */
+  var updatePins = function (data) {
+    renderPin(data);
+  };
+
   /* перестановка pin--active */
   var changeActivePins = function (item) {
     delActivePin();
-    item.classList.add('pin--active');
+    if (window.pins.length > 0) {
+      item.classList.add('pin--active');
+    }
   };
 
   /* удаление класса pin--active (используется при закрытии объявления) */
@@ -62,14 +68,14 @@ window.pin = (function () {
    * перестановка класса Active на нажатый pin
    * открытие объявления по индексу pin */
   var connectionPin = function (arr) {
-    var pins = document.querySelectorAll('.pin:not(.pin__main)');
+    window.pins = document.querySelectorAll('.pin:not(.pin__main)');
     changeActivePins(pins[0]);
 
     for (var i = 0; i < arr.length; i++) {
 
       pins[i].addEventListener('click', function (evt) {
         changeActivePins(evt.currentTarget);
-        window.showCard(evt);
+        window.showCard(evt, arr);
       });
 
       pins[i].addEventListener('keydown', function (evt) {
@@ -86,6 +92,7 @@ window.pin = (function () {
     generatePin: generatePin,
     connectionPin: connectionPin,
     renderPin: renderPin,
+    updatePins: updatePins,
     tokyoPins: tokyoPins
   };
 
