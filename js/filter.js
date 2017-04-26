@@ -13,6 +13,15 @@
   var housingFeatures = tokyoFilters.querySelector('#housing_features');
   var featuresInput = housingFeatures.getElementsByTagName('input');
 
+  var DEBOUNCE_INTERVAL = 300;
+  var lastTimeout;
+  var debounce = function (fun) {
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(fun, DEBOUNCE_INTERVAL)
+  };
+
   /* функция фильтрации типа жилья */
   var filterTypeHouse = function (data) {
     switch (typeHouse.value) {
@@ -109,8 +118,10 @@
 
   /* отрисовка pin по событию в контейнере фильтров */
   tokyoFilters.addEventListener('change', function () {
-    window.pin.tokyoPins.innerHTML = '';
-    window.pin.updatePins(filter(window.data));
+    debounce(function () {
+      window.pin.tokyoPins.innerHTML = '';
+      window.pin.updatePins(filter(window.data));
+    });
   });
 })();
 
