@@ -13,10 +13,10 @@ window.pin = (function () {
   };
 
   /* формирование pin */
-  var generatePin = function (i) {
+  var generatePin = function (item, i) {
 
-    var getX = window.data[i].location.x;
-    var getY = window.data[i].location.y;
+    var getX = item.location.x;
+    var getY = item.location.y;
     var div = document.createElement('div');
     div.className = 'pin';
     div.setAttribute('style', 'left:' + (getX - (sizeIconPin.width / 2)) + 'px; top:' + (getY - sizeIconPin.height) + 'px;');
@@ -26,17 +26,34 @@ window.pin = (function () {
     img.className = 'rounded';
     img.height = '40';
     img.width = '40';
-    img.setAttribute('src', window.data[i].author.avatar);
+    img.setAttribute('src', item.author.avatar);
     img.setAttribute('tabindex', '0');
     div.appendChild(img);
 
     return div;
   };
 
+  /* отрисовка pin на карту */
+  var renderPin = function (data) {
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < data.length; i++) {
+      fragment.appendChild(generatePin(data[i], i));
+    }
+    tokyoPins.appendChild(fragment);
+    connectionPin(data);
+  };
+
+  /* функция вызова обновления pin на карте */
+  var updatePins = function (data) {
+    renderPin(data);
+  };
+
   /* перестановка pin--active */
   var changeActivePins = function (item) {
     delActivePin();
-    item.classList.add('pin--active');
+    if (window.pins.length > 0) {
+      item.classList.add('pin--active');
+    }
   };
 
   /* удаление класса pin--active (используется при закрытии объявления) */
@@ -51,17 +68,17 @@ window.pin = (function () {
    * перестановка класса Active на нажатый pin
    * открытие объявления по индексу pin */
   var connectionPin = function (arr) {
-    var pins = tokyoPins.querySelectorAll('.pin');
-    changeActivePins(pins[0]);
+    window.pins = document.querySelectorAll('.pin:not(.pin__main)');
+    changeActivePins(window.pins[0]);
 
-    for (var i = 1; i <= arr.length; i++) {
+    for (var i = 0; i < arr.length; i++) {
 
-      pins[i].addEventListener('click', function (evt) {
+      window.pins[i].addEventListener('click', function (evt) {
         changeActivePins(evt.currentTarget);
-        window.showCard(evt);
+        window.showCard(evt, arr);
       });
 
-      pins[i].addEventListener('keydown', function (evt) {
+      window.pins[i].addEventListener('keydown', function (evt) {
         if (evt.keyCode === 13) {
           changeActivePins(evt.currentTarget);
           window.showCard(evt);
@@ -74,6 +91,8 @@ window.pin = (function () {
     delActivePin: delActivePin,
     generatePin: generatePin,
     connectionPin: connectionPin,
+    renderPin: renderPin,
+    updatePins: updatePins,
     tokyoPins: tokyoPins
   };
 
