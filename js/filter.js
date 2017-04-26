@@ -13,7 +13,7 @@
   var housingFeatures = tokyoFilters.querySelector('#housing_features');
   var featuresInput = housingFeatures.getElementsByTagName('input');
 
-  var DEBOUNCE_INTERVAL = 300;
+  var DEBOUNCE_INTERVAL = 500;
   var lastTimeout;
   var debounce = function (fun) {
     if (lastTimeout) {
