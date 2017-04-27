@@ -4,6 +4,7 @@
 'use strict';
 
 window.card = (function () {
+  var offerDialog = document.getElementById('offer-dialog');
   var lodgeTemplate = document.getElementById('lodge-template').content;
   var blockAvatar = document.querySelector('.dialog__title');
   var imgAvatar = blockAvatar.getElementsByTagName('img');
@@ -55,9 +56,6 @@ window.card = (function () {
 
     return poster;
   };
-
-  /* вывод первого объявления при загрузке страницы */
-  var offerDialog = document.getElementById('offer-dialog');
 
   /* оброботчик события - нажатие на ESC */
   var onEscPress = function (evt) {
