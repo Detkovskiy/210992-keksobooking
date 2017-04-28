@@ -14,14 +14,12 @@ window.pin = (function () {
 
   /* формирование pin */
   var generatePin = function (item, i) {
-
     var getX = item.location.x;
     var getY = item.location.y;
     var div = document.createElement('div');
     div.className = 'pin';
     div.setAttribute('style', 'left:' + (getX - (sizeIconPin.width / 2)) + 'px; top:' + (getY - sizeIconPin.height) + 'px;');
     div.setAttribute('data-index', i);
-
     var img = document.createElement('img');
     img.className = 'rounded';
     img.height = '40';
@@ -29,7 +27,6 @@ window.pin = (function () {
     img.setAttribute('src', item.author.avatar);
     img.setAttribute('tabindex', '0');
     div.appendChild(img);
-
     return div;
   };
 
@@ -72,7 +69,6 @@ window.pin = (function () {
     changeActivePins(window.pins[0]);
 
     for (var i = 0; i < arr.length; i++) {
-
       window.pins[i].addEventListener('click', function (evt) {
         changeActivePins(evt.currentTarget);
         window.showCard(evt, arr);
@@ -95,5 +91,4 @@ window.pin = (function () {
     updatePins: updatePins,
     tokyoPins: tokyoPins
   };
-
 })();
