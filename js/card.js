@@ -39,7 +39,6 @@ window.card = (function () {
     poster.querySelector('.lodge__type').textContent = translateTypeHouse(item[i].offer.type);
     poster.querySelector('.lodge__rooms-and-guests').textContent = 'Для ' + item[i].offer.guests + ' гостей в ' + item[i].offer.rooms + ' комнатах';
     poster.querySelector('.lodge__checkin-time').textContent = 'Заезд после ' + item[i].offer.checkin + ', выезд до ' + item[i].offer.checkout;
-
     var arrRandomFeatures = item[i].offer.features;
     var fragmentFeatures = document.createDocumentFragment();
     for (var j = 0; j < arrRandomFeatures.length; j++) {
@@ -89,5 +88,4 @@ window.card = (function () {
     dialogBlock: dialogBlock,
     onEscPress: onEscPress
   };
-
 })();

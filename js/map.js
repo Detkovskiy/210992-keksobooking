@@ -11,7 +11,6 @@ window.map = (function () {
 
   mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
-
     var startCoords = {
       x: evt.clientX,
       y: evt.clientY
@@ -21,7 +20,6 @@ window.map = (function () {
 
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
-
       var shift = {
         x: startCoords.x - moveEvt.clientX,
         y: startCoords.y - moveEvt.clientY
@@ -40,7 +38,6 @@ window.map = (function () {
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();
-
       var endCoords = {
         x: upEvt.clientX,
         y: upEvt.clientY
@@ -58,7 +55,13 @@ window.map = (function () {
 
   /* ввод координат в интуп адресной строки */
   var submitPress = window.form.noticeForm.querySelector('.form__submit');
+  var addressInput = window.form.noticeForm.querySelector('#address');
   var quantity = window.form.noticeForm.querySelector('#address').value;
+
+  /* добавоение атрибутов полю адресс */
+  addressInput.setAttribute('placeholder', 'введите координаты: xxx xxx');
+  addressInput.setAttribute('pattern', '[0-9]{2,3} [0-9]{2,3}');
+  addressInput.setAttribute('max', '900');
 
   /* оброботчик нажатия на кнопку отправить */
   var onFormSubmitPress = function () {

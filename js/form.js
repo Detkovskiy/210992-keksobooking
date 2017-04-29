@@ -41,5 +41,4 @@ window.form = (function () {
   return {
     noticeForm: noticeForm
   };
-
 })();

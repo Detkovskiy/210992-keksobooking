@@ -42,7 +42,6 @@
       var onPresCloseErrorBlock = function (evt) {
         evt.preventDefault();
         errorBlock.classList.add('hidden');
-
         closeErrorBlock.removeEventListener('click', onPresCloseErrorBlock);
         closeErrorBlock.removeEventListener('click', onEscPres);
       };
@@ -53,7 +52,6 @@
           closeErrorBlock.removeEventListener('click', onPresCloseErrorBlock);
         }
       };
-
       document.addEventListener('keydown', onEscPres);
       closeErrorBlock.addEventListener('click', onPresCloseErrorBlock);
     };
@@ -76,6 +74,5 @@
     xhr.open('GET', url);
     xhr.send();
   };
-
 })();
 
