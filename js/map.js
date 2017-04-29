@@ -5,7 +5,6 @@
 'use strict';
 
 window.map = (function () {
-  // var mainPin = window.pin.tokyoPins.querySelector('.pin__main');
   var mainPin = document.querySelector('.pin__main');
   var address = window.form.noticeForm.querySelector('#address');
 
@@ -58,7 +57,7 @@ window.map = (function () {
   var addressInput = window.form.noticeForm.querySelector('#address');
   var quantity = window.form.noticeForm.querySelector('#address').value;
 
-  /* добавоение атрибутов полю адресс */
+  /* добавление атрибутов полю адресс */
   addressInput.setAttribute('placeholder', 'введите координаты: xxx xxx');
   addressInput.setAttribute('pattern', '[0-9]{2,3} [0-9]{2,3}');
   addressInput.setAttribute('max', '900');
